@@ -18,8 +18,14 @@ def roll_dice(die: int, mod: Entry):
 
 
 def display_result(die: int, roll_result: int, mod: Entry, result: int):
-    print(f'd{die} = [{roll_result}] + {int(mod.get())} ({roll_result + int(mod.get())})')
+    listbox.delete(0, END)
     listbox.insert(END, f'd{die} result:\t [{roll_result} + {int(mod.get())}] = {result}')
+    clear_modifier(mod)
+
+
+def clear_modifier(entry: Entry):
+    entry.delete(0, END)
+    entry.insert(0, 0)
 
 
 # Column Labels
@@ -29,6 +35,10 @@ Label(frame, text="Modifier").grid(column=3, row=0)
 
 # die_4
 Label(frame, text="D4: ").grid(column=0, row=1)
+d4_quantity = Entry(frame, width=4, justify=CENTER)
+d4_quantity.grid(column=2, row=1)
+d4_quantity.insert(0, 0)
+
 d4_modifier = Entry(frame, width=4, justify=CENTER)
 d4_modifier.grid(column=3, row=1)
 d4_modifier.insert(0, 0)
@@ -37,6 +47,10 @@ d4.grid(column=1, row=1)
 
 # die_6
 Label(frame, text="D6: ").grid(column=0, row=2)
+d6_quantity = Entry(frame, width=4, justify=CENTER)
+d6_quantity.grid(column=2, row=2)
+d6_quantity.insert(0, 0)
+
 d6_modifier = Entry(frame, width=4, justify=CENTER)
 d6_modifier.grid(column=3, row=2)
 d6_modifier.insert(0, 0)
@@ -45,6 +59,10 @@ d6.grid(column=1, row=2)
 
 # die_8
 Label(frame, text="D8: ").grid(column=0, row=3)
+d8_quantity = Entry(frame, width=4, justify=CENTER)
+d8_quantity.grid(column=2, row=3)
+d8_quantity.insert(0, 0)
+
 d8_modifier = Entry(frame, width=4, justify=CENTER)
 d8_modifier.grid(column=3, row=3)
 d8_modifier.insert(0, 0)
@@ -53,6 +71,10 @@ d8.grid(column=1, row=3)
 
 # die_10
 Label(frame, text="D10: ").grid(column=0, row=4)
+d10_quantity = Entry(frame, width=4, justify=CENTER)
+d10_quantity.grid(column=2, row=4)
+d10_quantity.insert(0, 0)
+
 d10_modifier = Entry(frame, width=4, justify=CENTER)
 d10_modifier.grid(column=3, row=4)
 d10_modifier.insert(0, 0)
@@ -61,6 +83,10 @@ d10.grid(column=1, row=4)
 
 # die_12
 Label(frame, text="D12: ").grid(column=0, row=5)
+d12_quantity = Entry(frame, width=4, justify=CENTER)
+d12_quantity.grid(column=2, row=5)
+d12_quantity.insert(0, 0)
+
 d12_modifier = Entry(frame, width=4, justify=CENTER)
 d12_modifier.grid(column=3, row=5)
 d12_modifier.insert(0, 0)
@@ -69,6 +95,10 @@ d12.grid(column=1, row=5)
 
 # die_20
 Label(frame, text="D20: ").grid(column=0, row=6)
+d20_quantity = Entry(frame, width=4, justify=CENTER)
+d20_quantity.grid(column=2, row=6)
+d20_quantity.insert(0, 0)
+
 d20_modifier = Entry(frame, width=4, justify=CENTER)
 d20_modifier.grid(column=3, row=6)
 d20_modifier.insert(0, 0)
@@ -76,7 +106,7 @@ d20 = tkinter.Button(frame, text="roll d20", width=5, command=partial(roll_dice,
 d20.grid(column=1, row=6)
 
 # ListBox for Output
-listbox = tkinter.Listbox(frame, width=30, height=8)
+listbox = tkinter.Listbox(frame, width=25, height=4)
 listbox.grid(column=1, columnspan=5, padx=10, pady=10, row=7)
 
 # Exit
