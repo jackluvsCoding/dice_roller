@@ -12,13 +12,14 @@ frame.grid()
 root.title("Dice Roller 1.0.0")
 
 
-def roll_d4():
-    mod = d4_modifier.get()
-    dice.die_roll(4, int(mod))
-
-
 def roll_dice(die: int, mod: Entry):
-    dice.die_roll(die, int(mod.get()))
+    roll_result = dice.die_roll(die)
+    display_result(die, roll_result, mod, roll_result + int(mod.get()))
+
+
+def display_result(die: int, roll_result: int, mod: Entry, result: int):
+    print(f'd{die} = [{roll_result}] + {int(mod.get())} ({roll_result + int(mod.get())})')
+    listbox.insert(END, f'd{die} result:\t [{roll_result} + {int(mod.get())}] = {result}')
 
 
 # Column Labels
@@ -74,9 +75,13 @@ d20_modifier.insert(0, 0)
 d20 = tkinter.Button(frame, text="roll d20", width=5, command=partial(roll_dice, 20, d20_modifier))
 d20.grid(column=1, row=6)
 
+# ListBox for Output
+listbox = tkinter.Listbox(frame, width=30, height=8)
+listbox.grid(column=1, columnspan=5, padx=10, pady=10, row=7)
 
 # Exit
-ttk.Button(frame, text="Quit", command=root.destroy).grid(column=3, row=10)
+exit_button = tkinter.Button(frame, text="Quit", command=root.destroy)
+exit_button.grid(column=3, row=10, padx=10, pady=10)
 
 
 root.mainloop()
