@@ -121,11 +121,23 @@ d20_modifier.insert(0, 0)
 d20 = tkinter.Button(frame, text="roll d20", width=5, command=partial(roll_dice, 20, d20_quantity, d20_modifier))
 d20.grid(column=1, row=6)
 
+# die_100
+Label(frame, text="D100: ").grid(column=0, row=7)
+d100_quantity = Entry(frame, width=4, justify=CENTER)
+d100_quantity.grid(column=2, row=7)
+d100_quantity.insert(0, 1)
+
+d100_modifier = Entry(frame, width=4, justify=CENTER)
+d100_modifier.grid(column=3, row=7)
+d100_modifier.insert(0, 0)
+d100 = tkinter.Button(frame, text="roll d100", width=5, command=partial(roll_dice, 100, d100_quantity, d100_modifier))
+d100.grid(column=1, row=7)
+
 # ListBox for Output
 listbox = tkinter.Listbox(frame, width=25, height=4)
-listbox.grid(column=1, columnspan=5, padx=0, pady=10, row=7)
+listbox.grid(column=1, columnspan=5, padx=0, pady=10, row=8, sticky="nsew")
 clear_button = tkinter.Button(frame, text="clear", command=partial(clear_listbox), height=4)
-clear_button.grid(column=0, row=7)
+clear_button.grid(column=0, row=8)
 
 # Exit
 exit_button = tkinter.Button(frame, text="Quit", command=root.destroy)
