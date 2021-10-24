@@ -64,7 +64,11 @@ Label(frame, text="D12: ").grid(column=0, row=5)
 d12_modifier = Entry(frame, width=4, justify=CENTER)
 d12_modifier.grid(column=3, row=5)
 d12_modifier.insert(0, 0)
+<<<<<<< Updated upstream
 d12 = tkinter.Button(frame, text="roll d12", width=5, command=partial(roll_dice, 12, d12_modifier))
+=======
+d12 = tkinter.Button(frame, text="roll d12", width=5, command=partial(roll_dice, 12, d12_quantity, d12_modifier))
+>>>>>>> Stashed changes
 d12.grid(column=1, row=5)
 
 # die_20
