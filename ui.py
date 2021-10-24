@@ -24,8 +24,8 @@ def roll_dice(die: int, qty: Entry, mod: Entry):
 
 
 def display_result(die: int, rolls: [], qty: Entry, mod: Entry, result: int):
-    listbox.delete(0, END)
     listbox.insert(END, f'd{die} result:\t [{rolls} + {int(mod.get())}] = {result}')
+    listbox.yview(END)
     clear_quantity(qty)
     clear_modifier(mod)
 
